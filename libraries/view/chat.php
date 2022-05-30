@@ -1,58 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="script/discord.js"></script>
-  <title>Document</title>
-</head>
+use Libraries\Controller\Chat;
 
-<body>
-    <header style="width:100%;">
+require('../template2.php'); 
+require('../Controller/Chat.php');
+$test=new Chat;
+$test2=$test->chooseChan();
+var_dump($test2);
+// $a=Database::getPdo();
+// $b=new Chat::chan();
+// $sqlinsert = "SELECT * FROM cannal ";
+// $test=$a->prepare($sqlinsert);
+// $test->execute();
+// $test2=$test->fetchall(\PDO::FETCH_ASSOC);
+// var_dump($test2);
+?>
+<main>
+  <div name='discord'></div>
+  <form>
+    <div></div>
+    <input name='pseudo' value='<?php echo $_SESSION['user']['id'] ?>' type='hidden'> 
 
-    <nav>
-    <a href="./">home</a>
-      <a href="SignUp">inscription</a>
-      <a href="SignIn">connexion</a>
-      <?php 
-      if(isset($_SESSION['user'])){
-        echo "<a href='profil'>Profil</a>&nbsp" ;
-        echo "<a href='chat'>Chat</a>&nbsp" ;
-        if( $_SESSION['user']['id_droit']==2){
-          echo "<a href='Admin'>Admin</a>" ;
-          }
-      }?>
-      
-      <a href="disconnect">deconnexion</a>
-    </nav>
+    <textarea name="content" rows="5" cols="33"></textarea>
 
-    </header>
+    <input type='submit' name='submit' value='Envoyer' />
 
-    <main>
-      <div name='discord'></div>
-      
-    
-    <form method="post">
-      <select name='chan'>
-      <?php Chat::chooseChan(); ?>
-      </select>
-
-      <input name='pseudo' value='<?php echo $_SESSION['user']['id'] ?>' type='hidden' >  <br />
-
-    <textarea name="content"rows="5" cols="33"></textarea>
-
-        <input type='submit' name='submit'value='Envoyer' />
-
-    </form>
+  </form>
 
 
-    </main>
-    
-    <footer>
+</main>
 
-    </footer>
+<footer>
+
+</footer>
 </body>
 
 </html>

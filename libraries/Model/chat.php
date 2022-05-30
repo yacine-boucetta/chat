@@ -1,14 +1,16 @@
 <?php
-namespace Model;
+namespace Libraries\Model;
+
 
 class Chat extends Model
 {
+    protected $modelName=Libraries\Model\Chat::class;
 
     function __construct()
     {
     }
 
-    public static function refreschChat()
+    public  function refreschChat()
     {
     }
 
@@ -17,7 +19,7 @@ class Chat extends Model
     {
         $sql = "SELECT content,date,user.login FROM `messages` INNER JOIN user ON messages.id_user = user.id 
         INNER JOIN canal ON canal.id_canal = messages.id_canals
-         WHERE canal.id_canal=:chat ";
+        WHERE canal.id_canal=:chat ";
 
         $channel = $this->db->prepare($sql);
         $channel->execute(array(
@@ -42,10 +44,12 @@ class Chat extends Model
 
     public function chan()
     {
-        $sqlinsert = "SELECT * FROM canal ";
-        $chan = $this->db->prepare($sqlinsert);
-        $chan->execute();
-        $chanselect = $chan->fetchAll();
-        return $chanselect;
+        $sqlinsert = "SELECT * FROM `cannal` ";
+        $test3=$this->pdo->prepare($sqlinsert);
+        $test3=$this->pdo->execute();
+        $test3=$this->pdo->fetchall(\PDO::FETCH_ASSOC);
+        return($test3);
+        var_dump($test3);
     }
 }
+

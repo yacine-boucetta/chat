@@ -1,28 +1,28 @@
 <?php
-namespace controller;
+namespace Libraries\Controller;
 
 
-class SignIn extends controller
+class SignIn extends Controller
 {
-    protected $modelName="\models\model";
-    protected $uerName="\models\user";
+    protected $modelName= \Libraries\Model\User::class;
 
     public function view()
     {
-        require_once('view/signIn.php');
+        \Http::redirect("./libraries/view/".$_GET['url']);
     }
 
     public function signInAction()
     {
         $message = '';
-        if (isset($_POST['signIn'])) {
-            if ($this->user->checkUser($_POST['login']) < 1) {
+        if (isset($_POST['signIn'])) {  
+            if ($this->model->checkUser($_POST['login']) < 1) {
                 return $message;
             } else {           
-                $this->user->userConnexion($_POST['login']);
-                if (password_verify(htmlspecialchars($_POST['password'], ENT_QUOTES, "ISO-8859-1"),$this->user['password'])) {
-                    $_SESSION['user'] =$this->user; 
-                    header('Location:./');
+                $a=$this->model->userConnexion($_POST['login']);
+                if (password_verify(htmlspecialchars($_POST['password'], ENT_QUOTES, "ISO-8859-1"),$a['password'])) {
+                    session_start();
+                    $_SESSION['user'] =$a; 
+                    \Http::redirect("./Libraries/view/Home");
                 }else{
                     return $message;
                 }

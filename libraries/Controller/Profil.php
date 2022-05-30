@@ -1,41 +1,21 @@
 <?php
-namespace controller;
+namespace Libraries\Controller;
 
-
-
-class Profil extends controller
+use Libraries\Model\User;
+class Profil extends Controller
 {
-    protected $modelName="\models\model";
-    protected $uerName="\models\user";
+    protected $modelName= \Libraries\Model\User::class;
 
-
-    public static function  view()
+    public function  view()
     {
-        require("view/profil.php");
+        \Http::redirect("./libraries/view/".$_GET['url']);
     }
 
-    public static function stackUpdapte()
+    public  function checkEmpty()
     {
-        $message=[];
-        if (isset($_POST['valider'])) {
-            Profil::checkEmpty();
-            Profil::updateLogin();
-            Profil::updateEmail();
-            Profil::updatePassword();
-            $display = new \models\User();
-            $display->userDisplay($_SESSION['user']['id']);    
-            }  
-
-            if(!empty($message)){
-            foreach($message as $value){
-                echo $value;
-                // var_dump($value);
-        }
-        }
-    }
-
-    public static function checkEmpty()
-    {
+        if(isset($_POST['valider'])){
+            
+        session_start();
         if (empty($_POST['login'])) {
             $_POST['login'] = $_SESSION['user']['login'];
         }
@@ -49,23 +29,16 @@ class Profil extends controller
             $_POST['email'] = $_SESSION['user']['email'];
         }
 
-    }
-
-    public static function updateLogin()
-    {
-        $check = new \models\Model();
-        $checkLogin = $check->checkUser(htmlspecialchars($_POST['login'], ENT_QUOTES, "ISO-8859-1"));
-        if ($checkLogin > 0) {
+        $b=$this->model->checkUser(htmlspecialchars($_POST['login'], ENT_QUOTES, "ISO-8859-1"));
+        if ( $b>1) {
             return ;
         } 
-        else {
-            $updateUser = new \models\user();
-            $updateUser->loginUpdate(htmlspecialchars($_POST['login'], ENT_QUOTES, "ISO-8859-1"));
-        }
-    }
 
-    public static function updatePassword()
-    {
+            $test3=new User;
+            $test3->loginUpdate(htmlspecialchars($_POST['login'], ENT_QUOTES, "ISO-8859-1"));        
+            $_SESSION['user']['login']=$_POST['login'];
+
+
         $password = htmlspecialchars($_POST['password'], ENT_QUOTES, "ISO-8859-1");
         $password2 = htmlspecialchars($_POST['password2'], ENT_QUOTES, "ISO-8859-1");
         $uppercase = preg_match('@[A-Z]@', $password);
@@ -78,16 +51,18 @@ class Profil extends controller
             if (strlen($_POST['password']) >= 6) {
                 if ($password == $password2) {
                     $password = password_hash($password, PASSWORD_BCRYPT);
-                    $updatepassword = new \models\User();
+                    $updatepassword = new User();
                     $updatepassword->passwordUpdate($password);
                 }
             }
+
+            $update = new User();
+            $update->emailUpdate(htmlspecialchars($_POST['email'], ENT_QUOTES, "ISO-8859-1"));
+            $_SESSION['user']['email']=$_POST['email'];
+            
+            \Http::redirect("./libraries/view/profil");
     }
-    public static function updateEmail()
-    {
-        $update = new \models\User();
-        $update->emailUpdate(htmlspecialchars($_POST['email'], ENT_QUOTES, "ISO-8859-1"));
-    }
+}
 
 
 

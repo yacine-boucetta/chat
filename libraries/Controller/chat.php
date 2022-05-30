@@ -1,44 +1,34 @@
 <?php
-namespace Controller;
+namespace Libraries\Controller;
+
 
 
 class Chat extends Controller
 {
+    protected $modelName=\Libraries\Model\Chat::class;
 
-    protected $modelName="\models\model";
-    protected $uerName="\models\user";
-    
-    public static function refreschChat()
+    public  function refreschChat()
     {
     }
 
-
-    public static function view()
+    public  function view()
     {
-
-        require('view/chat.php');
-    }
-
-    public function chooseChan()
-    {
-        $choose = $this->chat->chan();
-        foreach ($choose as $value) {
-            echo "<option value=" . $value['id_canal'] . ">" . $value['id_canal'] . "</option>";
-        }
+        \Http::redirect("./Libraries/view/Chat");
     }
 
     public function insertion($content, $id, $idCanal)
     {
-        $this->chat->insertChat($content, $id, $idCanal);
+        $this->model->insertChat($content, $id, $idCanal);
     }
 
     public function chatInsert($idCanal)
     {
-        $this->chat->chatView($idCanal);
+        $this->model->chatView($idCanal);
     }
 
-    public static function test($i)
-    {
-        echo (json_encode($i));
+    public function chooseChan(){
+        $this->model->chan();
+        return ($this->model);
     }
+ 
 }

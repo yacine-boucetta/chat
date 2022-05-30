@@ -1,6 +1,6 @@
 <?php
-
-namespace Model;
+namespace Libraries\Model;
+use Libraries\Model\Model;
 
 class Admin extends Model
 {

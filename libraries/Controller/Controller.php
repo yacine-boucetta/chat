@@ -1,7 +1,5 @@
 <?php
-namespace Controller;
-
-
+namespace Libraries\Controller;
 abstract class Controller{
 
     
@@ -10,6 +8,7 @@ abstract class Controller{
 
 
     function __construct(){
+        var_dump($this->modelName);
         $this->model=new $this->modelName();
     }
     }

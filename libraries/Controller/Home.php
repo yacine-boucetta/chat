@@ -1,13 +1,14 @@
 <?php
+namespace Libraries\Controller;
 
-namespace Controller;
-class Home {
+
+class Home extends Controller {
 function __construct(){
 
 }
 
-public static function view(){
-require('libraries/view/home.php');
+public function view(){
+require('Libraries/view/Home.php');
 }
 
 

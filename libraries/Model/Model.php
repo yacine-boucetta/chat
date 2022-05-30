@@ -1,9 +1,9 @@
 <?php
 
-namespace Model;
+namespace Libraries\Model;
 
 
-require_once('libraries/Database.php');
+require_once('../Database.php');
 
 
 abstract class Model

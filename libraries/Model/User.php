@@ -1,6 +1,6 @@
 <?php
+namespace Libraries\Model;
 
-namespace Model;
 
 class User extends Model
 {
@@ -9,11 +9,11 @@ class User extends Model
     public $password;
     public $email;
 
-    protected $modelName=\model\User::class;
+    protected $modelName=\Model\User::class;
     //---------- inserer pour inscription---------
     public function checkUser($login)
     {
-        $sqlinsert = "SELECT * FROM user WHERE login=:login ";
+        $sqlinsert = "SELECT COUNT(*) FROM user WHERE login NOT LIKE ':login%' ";
         $signIn = $this->pdo->prepare($sqlinsert);
         $signIn->execute(array(
             ':login' => $login,
