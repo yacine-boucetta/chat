@@ -1,9 +1,13 @@
-<?php
 
-require_once('libraries/autoload.php');
-require_once('libraries/Application.php');
-Application::process();
+<?php require('class/User.php'); 
+require('template.php');
+?>
+<main class="home">
+    </main>
+    
+    <footer>
 
-// if (isset($_GET['url'])) {
-//     $url = explode('/', $_GET['url']);
-// }
+    </footer>
+</body>
+
+</html>

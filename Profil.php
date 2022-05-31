@@ -1,6 +1,14 @@
-<?php require('../template2.php');?>
-    <main class="">
-        <form class="form" method="post" action='../../?url=Profil&task=checkEmpty'>
+<?php 
+require('class/User.php');
+require('template.php');
+
+if(isset($_POST['valider'])){
+$userUpdate=new User;
+$userUpdate->userUpdate();
+}
+?>
+<main class="">
+        <form class="form" method="post">
 
 
                 <h2>Profil</h2>

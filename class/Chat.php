@@ -1,13 +1,11 @@
-<?php
-namespace Libraries\Model;
 
+<?php require('./');
 
-class Chat extends Model
+class Chat
 {
-    protected $modelName=Libraries\Model\Chat::class;
-
     function __construct()
     {
+        $this->db=getPdo();
     }
 
     public  function refreschChat()
@@ -18,26 +16,25 @@ class Chat extends Model
     public function chatView($chat)
     {
         $sql = "SELECT content,date,user.login FROM `messages` INNER JOIN user ON messages.id_user = user.id 
-        INNER JOIN canal ON canal.id_canal = messages.id_canals
-        WHERE canal.id_canal=:chat ";
+        INNER JOIN cannal ON cannal.id_cannal = messages.id_canals
+        WHERE cannal.id_cannal=:chat ";
 
         $channel = $this->db->prepare($sql);
         $channel->execute(array(
             ":chat" => $chat,
         ));
-        $channelview = $channel->fetchAll();
+        $channelview = $channel->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($channelview);
     }
 
     public function insertChat($content, $id, $idCanal)
     {
-        $sql = "INSERT INTO messages (content,id_user,date,id_canals) Values(:content,:idUser,:date,:idCanal)";
-
+        $sql = "INSERT INTO `messages` (content,date,id_user,id_canals) Values(:content,:date,:idUser,:idCanal)";
         $insert = $this->db->prepare($sql);
         $insert->execute(array(
             ":content" => $content,
-            ":idUser" => $id,
             ":date" => date("Y-m-d H:i:s"),
+            ":idUser" => $id,
             ":idCanal" => $idCanal,
         ));
     }
@@ -45,11 +42,16 @@ class Chat extends Model
     public function chan()
     {
         $sqlinsert = "SELECT * FROM `cannal` ";
-        $test3=$this->pdo->prepare($sqlinsert);
-        $test3=$this->pdo->execute();
-        $test3=$this->pdo->fetchall(\PDO::FETCH_ASSOC);
-        return($test3);
-        var_dump($test3);
+        $test=$this->db->prepare($sqlinsert);
+        $test->execute();
+        $test3=$test->fetchAll(PDO::FETCH_ASSOC);
+        foreach($test3 as $value){
+            echo '<option value="' . $value['id'] . '">' . $value['id_cannal'] . '</option>';
+
+        }
     }
 }
-
+if(isset($_GET['test'])){
+$discordo=new chat;
+@ $discordo->chatView($_POST['chan']);
+}

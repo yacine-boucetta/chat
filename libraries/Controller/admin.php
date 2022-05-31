@@ -1,2 +1,0 @@
-<?php
-namespace Libraries\Controller;

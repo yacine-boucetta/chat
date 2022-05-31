@@ -1,15 +1,14 @@
-document.addEventListener("DOMContentLoaded", async() => {
-    // let search = document.querySelector("[name='chan']")
+document.addEventListener("DOMContentLoaded", () => {
+    let search = document.querySelector("[name='discordo']")
     let div = document.getElementById('discord')
     let data = new FormData();
-    // tab=[]
-// console.log(search.value)
-    // data.append('chan', encodeURIComponent(search.value))
-        // console.log(data)
- await fetch( url='http://localhost/project/chat/libraries/model/chat.php', 
+    tab=[]
+console.log(search.value)
+    data.append('chan', encodeURIComponent(search.value))
+fetch( './class/Chat.php?test=1', 
     { 
-        method: 'GET', 
-        body:undefined,  
+        method: 'POST', 
+        body:data,  
     }).then(response => console.log(response.json()))
     .then((results) => console.log(results))
 
@@ -21,4 +20,3 @@ document.addEventListener("DOMContentLoaded", async() => {
 
     }
     )
-
