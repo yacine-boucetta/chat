@@ -6,7 +6,7 @@ require('template.php');
 
 <img src='rick.gif'>
     <h1>Bienvenue sur discordo</h1>
-    <p>le premier chat qui est sans filtre comme les gitane</p>
+    <h2>le premier chat qui est sans filtre comme les gitane</h2>
     </main>
     
     <footer>

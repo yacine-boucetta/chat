@@ -10,7 +10,7 @@ require('template.php');
 <main class="">
     <form class="form" method="post" >
         <p><?php echo $message; ?></p>
-        <h2>Connexion</h2>
+        <h3>Connexion</h3>
 
 <label for="login" class="placeholder">Login</label>
         <input id="name" class="input" type="text" placeholder=" " name="login" required />
@@ -19,7 +19,7 @@ require('template.php');
 <label for="password" class="placeholder">Password</label>
         <input id="password" class="input" type="password" placeholder=" " name="password" required />
         
-
+        
         <input name='signIn' class='submit' type="submit" value='connexion'>
 
 </main>

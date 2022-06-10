@@ -11,8 +11,7 @@ if (isset($_POST['sign_up'])) {
 <main class="">
     <form class="form" method="post">
 
-        <p><?php echo $message; ?></p>
-        <h2>Inscription</h2>
+        <h3>Inscription</h3>
         
         <label for="login" class="placeholder">Login</label>
         <input id="name" class="input" type="text" placeholder=" " name="login" required />
@@ -22,8 +21,13 @@ if (isset($_POST['sign_up'])) {
 
 
         <label for="password" class="placeholder">Password</label>
-        <input id="password" class="input" type="password" placeholder=" " name="password" required />
+       
 
+        <input id="password" class="input" type="password" placeholder=" " name="password" required />
+        <p>le mot de passe doit contenir au moins un caractere minuscule</p>
+        <p>le mot de passe doit contenir au moins un caractere majuscule</p>
+        <p>le mot de passe doit contenir au moins 8 caracteres</p>
+        <p>le mot de passe doit contenir au moins 1 chiffre</p>
 
         <input name='sign_up' type="submit" class='submit' value='inscription' />
 
