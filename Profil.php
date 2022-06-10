@@ -26,7 +26,7 @@ $userUpdate->userUpdate();
         <input id="password2" class="input" type="password" placeholder="Confirmez le  mot de passe"name="password2"  />
         <label for="password2" class="placeholder">Password</label>
 
-        <button class='submit' name='valider' type="submit">valider</button>
+        <input class='submit' name='valider' type="submit" value='valider'/>
 
         </form>
     </main>

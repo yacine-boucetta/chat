@@ -12,16 +12,15 @@ require('template.php');
         <p><?php echo $message; ?></p>
         <h2>Connexion</h2>
 
-
+<label for="login" class="placeholder">Login</label>
         <input id="name" class="input" type="text" placeholder=" " name="login" required />
-        <label for="login" class="placeholder">Login</label>
+        
 
-
+<label for="password" class="placeholder">Password</label>
         <input id="password" class="input" type="password" placeholder=" " name="password" required />
-        <label for="password" class="placeholder">Password</label>
+        
 
-        <button name='signIn' class='submit' type="submit">connexion</button>
-    </form>
+        <input name='signIn' class='submit' type="submit" value='connexion'>
 
 </main>
 </body>

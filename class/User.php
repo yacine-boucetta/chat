@@ -1,4 +1,4 @@
-<?php require('./database.php');
+<?php require('database.php');
 
 class User{
     public $login;
@@ -74,9 +74,7 @@ class User{
     if (isset($_POST['signIn'])) {  
         $test= new User;
         $test2=$test->checkUser($login);
-        var_dump($test2);
         if ($test2 == 0) {
-            echo'test1';
             return $message="ce login n'existe pas";
         } else {           
             $signIn=$test->userConnexion($login);

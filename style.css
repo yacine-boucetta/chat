@@ -1,0 +1,139 @@
+@font-face {
+    font-family:'upheavtt';
+    src: url('upheavtt.ttf') format("truetype");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-y: hidden;
+    /* Hide vertical scrollbar */
+    overflow-x: hidden;
+    /* Hide horizontal scrollbar */
+    display:flex;
+    flex-direction: column;
+}
+
+
+header {
+    height: 10%;
+    background-color: rgb(255, 51, 0);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    letter-spacing: .2rem;
+    color: aliceblue;
+    font-family: "upheavtt";
+    justify-content: space-between;
+}
+
+img {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+
+h1 {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    color: aliceblue;
+    font-size: 3em;
+    font-family: "upheavtt";
+    -webkit-text-stroke: 0.75px rgb(0, 204, 255);
+    letter-spacing: .2rem;
+}
+
+p {
+    -webkit-text-stroke: 0.5px rgb(0, 204, 255);
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    color: aliceblue;
+    font-size: 1.5em;
+    font-family: "upheavtt";
+}
+
+.form{
+    height: 37%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+width: 30%;
+background-color: rgb(255, 51, 0);
+border-radius: 10px;
+position: absolute;
+top:30%;
+left:33.5%;
+color: aliceblue;
+padding-bottom: 5%;
+font-family: "upheavtt";
+letter-spacing: .2rem;
+
+}
+
+.form input{
+    width: 50%;
+    align-items: center;
+    font-family: "upheavtt";
+letter-spacing: .2rem;
+color: rgb(255, 51, 0);
+}
+.submit{
+    position: relative;
+    height: 30px;
+ 
+}
+
+#cont{
+    position: relative;
+    top:20%;
+    
+}
+
+.form2{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 30%;
+background-color: rgb(255, 51, 0);
+border-radius: 10px;
+position: absolute;
+top:60%;
+left:33.5%;
+color: aliceblue;
+padding: 1.5%;
+font-family: "upheavtt";
+letter-spacing: .2rem;
+
+}
+
+.form2 textarea{
+    width:75%;
+    border-radius: 10px;
+    font-family: "upheavtt";}
+
+
+#discord{
+position: relative;
+top:60%;
+left:35%;
+width:30%;
+height: 40%;
+
+border-radius: 10px;
+}
+
+select{
+    position:relative;
+    left:15%;
+    font-family: "upheavtt";
+   
+}
