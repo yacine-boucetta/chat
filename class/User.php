@@ -177,7 +177,19 @@ public function userDisplay($id)
 }
 
 
+if(isset($_POST['login'])){
 
+if($_GET['test']== 10){
+    $test= new User;
+    $test2=$test->checkUser($_POST['login']);
+    if($test2>0){
+        echo json_encode('le login existe déjà');
+    }else{
+        echo json_encode('le login est disponible');
+    }
+}
+
+}
 
 
 

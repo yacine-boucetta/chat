@@ -10,12 +10,11 @@ if (isset($_POST['sign_up'])) {
 ?>
 <main class="">
     <form class="form" method="post">
-
         <h3>Inscription</h3>
         
         <label for="login" class="placeholder">Login</label>
         <input id="name" class="input" type="text" placeholder=" " name="login" required />
-
+        <div id="check"></div>
         <label for="email" class="placeholder">Email</label>
         <input id="email" class="input" type="email" placeholder=" " name="email" required />
 

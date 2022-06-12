@@ -15,6 +15,10 @@ body {
     flex-direction: column;
 }
 
+#check{
+    text-align: center;
+    font-size: 8px;
+}
 
 header {
     height: 10%;

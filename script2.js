@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
 //-----------------user friendly password--------
 let password = document.querySelector("[name='password']")
 let p = document.querySelectorAll("p")
-
-
+let check=document.getElementById('check')
+let data = new FormData()
+let login=document.querySelector("[name='login']")
 let regexLowerCase = /[a-z]{1,}/
 let regexUpperCase = /[A-Z]{1,}/
 let regexNumber = /[0-9]{1,}/
@@ -54,4 +55,21 @@ console.log(password.value)
         p[3].style.color = 'grey'
     }
 }
-)})
+)
+
+login.addEventListener("keyup", () => {
+    check.innerHTML=''  
+    data.append('login', encodeURIComponent(login.value))
+     fetch('./class/User.php?test=10',
+        {
+            method: 'POST',
+            body: data,
+        })
+        .then(response => response.json())
+        .then((results) => check.innerHTML += results);
+        
+
+
+})
+
+})
